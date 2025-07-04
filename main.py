@@ -45,7 +45,7 @@ player_idle = entity.AnimatedEntity(
     round(SCREEN_WIDTH / 2) - 12,
     round(SCREEN_WIDTH / 2) - 24,
     player_idle_frames,
-    pygame.rect.Rect(SCREEN_WIDTH / 2, SCREEN_WIDTH / 2, 24, 48),
+    pygame.rect.Rect(SCREEN_WIDTH / 2-24, SCREEN_HIGHT / 2-36, 24, 36),
     4,
 )
 dirty_player_idle = player_idle
@@ -129,19 +129,39 @@ while True:
     for object in tile_state:
         print("hey")
         try:
-            the_hitbox = hit_boxes[hitbox_assign[tile_map.start_pos[object]["type"]]["type"]].move(object["x"],object["y"])
-            if player_idle.hitbox.colliderect(the_hitbox):
-                camera_x -= dx
-                camera_y -= dy
-                a_fake.shift(-camera_x, -camera_y)
-                tile_map.reload(map_data)
-                tile_state = tile_map.get_pos(camera_x, camera_y)
-                print("p")
-                pygame.draw.rect(screen,"blue",(the_hitbox.topleft[0],the_hitbox.topleft[1],16,16))
-                break
+            the_hitbox = hit_boxes[hitbox_assign[tile_map.start_pos[object]["type"]]["type"]]
         except:
-           print("nope")
-           continue
+            continue
+        the_hitbox = the_hitbox.move(the_hitbox.topleft[0],the_hitbox.topleft[1]).move(tile_map.start_pos[object]["x"]*16,tile_map.start_pos[object]["y"]*16)
+        pygame.draw.rect(screen,"red",player_idle.hitbox)
+        if the_hitbox.colliderect(player_idle.hitbox):
+            pygame.draw.rect(screen,"blue",(the_hitbox.topleft[0],the_hitbox.topleft[1],16,16))
+            if abs(dx)>abs(dy):
+                while(the_hitbox.colliderect(player_idle.hitbox)):
+                    camera_x+=dx/dx/16
+                    a_fake.shift(-camera_x, -camera_y)
+                    tile_map.reload(map_data)
+                    tile_state = tile_map.get_pos(camera_x, camera_y)
+                    the_hitbox = hit_boxes[hitbox_assign[tile_map.start_pos[object]["type"]]["type"]].move(tile_map.start_pos[object]["x"]*16,tile_map.start_pos[object]["y"]*16)
+            elif abs(dy)>abs(dx):
+                while(the_hitbox.colliderect(player_idle.hitbox)):
+                    camera_y-=dy/dy/16
+                    a_fake.shift(-camera_x, -camera_y)
+                    tile_map.reload(map_data)
+                    tile_state = tile_map.get_pos(camera_x, camera_y)
+                    the_hitbox = hit_boxes[hitbox_assign[tile_map.start_pos[object]["type"]]["type"]].move(tile_map.start_pos[object]["x"]*16,tile_map.start_pos[object]["y"]*16)
+            elif abs(dy)==abs(dx):
+                while(the_hitbox.colliderect(player_idle.hitbox)):
+                    try:
+                        camera_x+=dx/dx/16
+                        camera_y+=dy/dy/16
+                    except:
+                        dx=dy=1
+                    a_fake.shift(-camera_x, -camera_y)
+                    tile_map.reload(map_data)
+                    tile_state = tile_map.get_pos(camera_x, camera_y)
+                    the_hitbox = hit_boxes[hitbox_assign[tile_map.start_pos[object]["type"]]["type"]].move(tile_map.start_pos[object]["x"]*16,tile_map.start_pos[object]["y"]*16)
+            break
 
     #editor
     if edit and key[pygame.K_g]:

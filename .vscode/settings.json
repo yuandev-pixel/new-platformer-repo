@@ -1,8 +1,10 @@
 {
     "cSpell.words": [
         "blit",
+        "colliderect",
         "DOUBLEBUF",
         "entitys",
+        "hitbox",
         "HWSURFACE",
         "vsync"
     ]
