@@ -1,6 +1,7 @@
 {
    "-2":
    {
-        "type":"full"  
+        "type":"full",
+        "attribute":"collide"
    } 
 }

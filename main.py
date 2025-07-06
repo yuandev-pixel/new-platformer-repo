@@ -32,6 +32,9 @@ previous_camera_x = 1
 previous_camera_y = 1
 dx = 0
 dy = 0
+px=0
+py=0
+ground=False
 
 player_idle_frames = [
     pygame.transform.scale(
@@ -118,30 +121,104 @@ while True:
         if edit:
             dy = -math.ceil(0.1 * delta)
         else:
-            dy=-1
+            if ground:
+                dy=-1
     if not edit:
-        dy+=0.05
-    camera_x-=dx
+        dy+=0.1
+    collision = False
     a_fake.shift(-camera_x, -camera_y)
     tile_map.reload(map_data)
     tile_state = tile_map.get_pos(camera_x, camera_y)
-    for object in tile_state:
-        try:
-            the_hitbox = hit_boxes[hitbox_assign[tile_map.start_pos[object]["type"]]["type"]]
-        except:
-            continue
-        the_hitbox = the_hitbox.move(the_hitbox.topleft[0],the_hitbox.topleft[1]).move(tile_map.start_pos[object]["x"]*16,tile_map.start_pos[object]["y"]*16)
-        pygame.draw.rect(screen,"red",player_idle.hitbox)
-        pygame.draw.rect(screen,"blue",the_hitbox)
-        while the_hitbox.colliderect(player_idle.hitbox):
-            if abs(dx)==dx:
+    tx = dx
+    ty = dy
+    ground=False
+    while abs(dx*16) > 1:# or abs(dy*16) >1:
+        if dx>1/16:
+            camera_x-=1/16
+            dx-=1/16
+        elif dx< -1/16:    
+            camera_x+=1/16
+            dx+=1/16
+            
+        a_fake.shift(-camera_x, -camera_y)
+        tile_map.reload(map_data)
+        tile_state = tile_map.get_pos(camera_x, camera_y)
+        for object in tile_state:
+            try:
+                the_hitbox = hit_boxes[hitbox_assign[tile_map.start_pos[object]["type"]]["type"]]
+            except:
+                continue
+            the_hitbox = the_hitbox.move(the_hitbox.topleft[0],the_hitbox.topleft[1]).move(tile_map.start_pos[object]["x"]*16,tile_map.start_pos[object]["y"]*16)
+            
+            # pygame.draw.rect(screen,"red",player_idle.hitbox)
+            # if hitbox_assign[tile_map.start_pos[object]["type"]]["attribute"] == "collide":
+            #     pygame.draw.rect(screen,"blue",the_hitbox)
+            # elif hitbox_assign[tile_map.start_pos[object]["type"]]["attribute"] == "kill":
+            #     pygame.draw.rect(screen,"red",the_hitbox)
+            if the_hitbox.colliderect(player_idle.hitbox):
+                collision = True
+                if hitbox_assign[tile_map.start_pos[object]["type"]]["attribute"] == "kill" and (not edit):
+                    pygame.quit()
+                    sys.exit()
+                break
+        if collision and (not edit):
+            if dx>0:
                 camera_x+=1/16
-            else:
+                dx+=1/16
+            elif dx< 0:    
                 camera_x-=1/16
+                dx-=1/16
+            
             a_fake.shift(-camera_x, -camera_y)
             tile_map.reload(map_data)
             tile_state = tile_map.get_pos(camera_x, camera_y)
+            break
+    collision = False
+    while abs(dy*16) > 1:# or abs(dy*16) >1:
+        
+        if dy>1/16:
+            camera_y+=1/16
+            dy-=1/16
+        elif dy< -1/16:    
+            camera_y-=1/16
+            dy+=1/16    
+        a_fake.shift(-camera_x, -camera_y)
+        tile_map.reload(map_data)
+        tile_state = tile_map.get_pos(camera_x, camera_y)
+        for object in tile_state:
+            try:
+                the_hitbox = hit_boxes[hitbox_assign[tile_map.start_pos[object]["type"]]["type"]]
+            except:
+                continue
             the_hitbox = the_hitbox.move(the_hitbox.topleft[0],the_hitbox.topleft[1]).move(tile_map.start_pos[object]["x"]*16,tile_map.start_pos[object]["y"]*16)
+            # pygame.draw.rect(screen,"red",player_idle.hitbox)
+            # if hitbox_assign[tile_map.start_pos[object]["type"]]["attribute"] == "collide":
+            #     pygame.draw.rect(screen,"blue",the_hitbox)
+            # elif hitbox_assign[tile_map.start_pos[object]["type"]]["attribute"] == "kill":
+            #     pygame.draw.rect(screen,"red",the_hitbox)
+            if the_hitbox.colliderect(player_idle.hitbox):
+                collision = True
+                if hitbox_assign[tile_map.start_pos[object]["type"]]["attribute"] == "kill" and (not edit):
+                    pygame.quit()
+                    sys.exit()
+                break
+        if collision and (not edit):
+            if dy>0:
+                camera_y-=1/16
+                dy+=1/16
+                ground = True
+            elif dy< 0:    
+                camera_y+=1/16
+                dy-=1/16
+            
+            
+            a_fake.shift(-camera_x, -camera_y)
+            tile_map.reload(map_data)
+            tile_state = tile_map.get_pos(camera_x, camera_y)
+            break
+    
+    dx=tx
+    dy=ty                
     #editor
     if edit and key[pygame.K_g]:
         camera_x=round(camera_x)
