@@ -105,64 +105,43 @@ while True:
 
     #移动逻辑
     key = pygame.key.get_pressed()
+    dx=0
+    if edit:
+        dy=0
     if key[pygame.K_a]:
-        camera_x -= math.ceil(0.1 * delta)
         dx = math.ceil(0.1 * delta)
     if key[pygame.K_d]:
-        camera_x += math.ceil(0.1 * delta)
         dx = -math.ceil(0.1 * delta)
     if key[pygame.K_s] and edit:
-        camera_y += math.ceil(0.1 * delta)
         dy = math.ceil(0.1 * delta)
     if key[pygame.K_w]:
         if edit:
-            camera_y -= math.ceil(0.1 * delta)
             dy = -math.ceil(0.1 * delta)
         else:
             dy=-1
     if not edit:
-        camera_y+=dy
         dy+=0.05
+    camera_x-=dx
     a_fake.shift(-camera_x, -camera_y)
     tile_map.reload(map_data)
     tile_state = tile_map.get_pos(camera_x, camera_y)
     for object in tile_state:
-        print("hey")
         try:
             the_hitbox = hit_boxes[hitbox_assign[tile_map.start_pos[object]["type"]]["type"]]
         except:
             continue
         the_hitbox = the_hitbox.move(the_hitbox.topleft[0],the_hitbox.topleft[1]).move(tile_map.start_pos[object]["x"]*16,tile_map.start_pos[object]["y"]*16)
         pygame.draw.rect(screen,"red",player_idle.hitbox)
-        if the_hitbox.colliderect(player_idle.hitbox):
-            pygame.draw.rect(screen,"blue",(the_hitbox.topleft[0],the_hitbox.topleft[1],16,16))
-            if abs(dx)>abs(dy):
-                while(the_hitbox.colliderect(player_idle.hitbox)):
-                    camera_x+=dx/dx/16
-                    a_fake.shift(-camera_x, -camera_y)
-                    tile_map.reload(map_data)
-                    tile_state = tile_map.get_pos(camera_x, camera_y)
-                    the_hitbox = hit_boxes[hitbox_assign[tile_map.start_pos[object]["type"]]["type"]].move(tile_map.start_pos[object]["x"]*16,tile_map.start_pos[object]["y"]*16)
-            elif abs(dy)>abs(dx):
-                while(the_hitbox.colliderect(player_idle.hitbox)):
-                    camera_y-=dy/dy/16
-                    a_fake.shift(-camera_x, -camera_y)
-                    tile_map.reload(map_data)
-                    tile_state = tile_map.get_pos(camera_x, camera_y)
-                    the_hitbox = hit_boxes[hitbox_assign[tile_map.start_pos[object]["type"]]["type"]].move(tile_map.start_pos[object]["x"]*16,tile_map.start_pos[object]["y"]*16)
-            elif abs(dy)==abs(dx):
-                while(the_hitbox.colliderect(player_idle.hitbox)):
-                    try:
-                        camera_x+=dx/dx/16
-                        camera_y+=dy/dy/16
-                    except:
-                        dx=dy=1
-                    a_fake.shift(-camera_x, -camera_y)
-                    tile_map.reload(map_data)
-                    tile_state = tile_map.get_pos(camera_x, camera_y)
-                    the_hitbox = hit_boxes[hitbox_assign[tile_map.start_pos[object]["type"]]["type"]].move(tile_map.start_pos[object]["x"]*16,tile_map.start_pos[object]["y"]*16)
-            break
-
+        pygame.draw.rect(screen,"blue",the_hitbox)
+        while the_hitbox.colliderect(player_idle.hitbox):
+            if abs(dx)==dx:
+                camera_x+=1/16
+            else:
+                camera_x-=1/16
+            a_fake.shift(-camera_x, -camera_y)
+            tile_map.reload(map_data)
+            tile_state = tile_map.get_pos(camera_x, camera_y)
+            the_hitbox = the_hitbox.move(the_hitbox.topleft[0],the_hitbox.topleft[1]).move(tile_map.start_pos[object]["x"]*16,tile_map.start_pos[object]["y"]*16)
     #editor
     if edit and key[pygame.K_g]:
         camera_x=round(camera_x)
