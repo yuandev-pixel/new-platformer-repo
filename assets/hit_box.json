@@ -2,6 +2,6 @@
    "-2":
    {
         "type":"full",
-        "attribute":"collide"
+        "attribute":"half"
    } 
 }

@@ -57,6 +57,7 @@ select_tile = pygame.image.load("./assets/tiles/select.png")
 select_tile = pygame.transform.scale(select_tile,(16,16)).convert_alpha()
 dirty_select_tile = select_tile
 real_mouse_tile_pos=(0,0)
+mouse_tile_pos = (0,0)
 
 preview_tile = []
 for i in range(-2,96):
@@ -156,6 +157,8 @@ while True:
             # elif hitbox_assign[tile_map.start_pos[object]["type"]]["attribute"] == "kill":
             #     pygame.draw.rect(screen,"red",the_hitbox)
             if the_hitbox.colliderect(player_idle.hitbox):
+                if hitbox_assign[tile_map.start_pos[object]["type"]]["attribute"] == "half":
+                    continue
                 collision = True
                 if hitbox_assign[tile_map.start_pos[object]["type"]]["attribute"] == "kill" and (not edit):
                     pygame.quit()
@@ -197,6 +200,9 @@ while True:
             # elif hitbox_assign[tile_map.start_pos[object]["type"]]["attribute"] == "kill":
             #     pygame.draw.rect(screen,"red",the_hitbox)
             if the_hitbox.colliderect(player_idle.hitbox):
+                print(the_hitbox.bottom<=player_idle.hitbox.bottom)
+                if dy<=0 and hitbox_assign[tile_map.start_pos[object]["type"]]["attribute"] == "half":
+                    continue
                 collision = True
                 if hitbox_assign[tile_map.start_pos[object]["type"]]["attribute"] == "kill" and (not edit):
                     pygame.quit()
@@ -218,7 +224,14 @@ while True:
             break
     
     dx=tx
-    dy=ty                
+    dy=ty  
+
+    if edit:
+        camera_x=round(camera_x)
+        camera_y=round(camera_y)
+        real_mouse_tile_pos=(round(real_mouse_tile_pos[0]),round(real_mouse_tile_pos[1]))
+        mouse_tile_pos=(round(mouse_tile_pos[0]),round(mouse_tile_pos[1])) # type: ignore
+
     #editor
     if edit and key[pygame.K_g]:
         camera_x=round(camera_x)
@@ -230,10 +243,14 @@ while True:
             the_tile = map_data[str(real_mouse_tile_pos[0]*75)+"."+str(real_mouse_tile_pos[1])]["type"]
         except:
             the_tile = 0
+    if key[pygame.K_c] and edit:
+        hitbox_assign[str(map_data[str(real_mouse_tile_pos[0]*75)+"."+str(real_mouse_tile_pos[1])]["type"])]={"type":"full","attribute":"collide"}
     if (key[pygame.K_LSHIFT] or key[pygame.K_RSHIFT]) and key[pygame.K_s]:
         with open(join("./assets/",input("file name:")),mode="w") as f:
             data={"map":map_data,"other":{"cx":camera_x,"cy":camera_y}}
             json.dump(data, f, ensure_ascii=False, indent=4)
+        with open(join("./assets/","hit_box.json"),mode="w") as f:
+            json.dump(hitbox_assign, f, ensure_ascii=False, indent=4)
     if (key[pygame.K_LSHIFT] or key[pygame.K_RSHIFT]) and key[pygame.K_l]:
         with open(join("./assets/",input("file name:")),mode="r") as json_file:
             try:
