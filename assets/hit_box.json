@@ -1,7 +1,10 @@
 {
-   "-2":
-   {
-        "type":"full",
-        "attribute":"half"
-   } 
+    "-2": {
+        "type": "top-half",
+        "attribute": "collide"
+    },
+    "8": {
+        "type": "full",
+        "attribute": "collide"
+    }
 }

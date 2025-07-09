@@ -87,8 +87,13 @@ lt = 0
 
 edit = True
 
+hb_list = ["full","top-half"]
+atr_list = ["collide","half","kill"]
+atr_list_id = 0
+list_id = 0
 hit_boxes = {
-    "full":pygame.Rect(0,0,16,16)
+    "full":pygame.Rect(0,0,16,16),
+    "top-half":pygame.Rect(0,0,16,8)
 }
 
 while True:
@@ -125,7 +130,7 @@ while True:
             if ground:
                 dy=-1
     if not edit:
-        dy+=0.1
+        dy+=0.2
     collision = False
     a_fake.shift(-camera_x, -camera_y)
     tile_map.reload(map_data)
@@ -149,7 +154,7 @@ while True:
                 the_hitbox = hit_boxes[hitbox_assign[tile_map.start_pos[object]["type"]]["type"]]
             except:
                 continue
-            the_hitbox = the_hitbox.move(the_hitbox.topleft[0],the_hitbox.topleft[1]).move(tile_map.start_pos[object]["x"]*16,tile_map.start_pos[object]["y"]*16)
+            the_hitbox = the_hitbox.move(tile_map.start_pos[object]["x"]*16,tile_map.start_pos[object]["y"]*16)
             
             # pygame.draw.rect(screen,"red",player_idle.hitbox)
             # if hitbox_assign[tile_map.start_pos[object]["type"]]["attribute"] == "collide":
@@ -193,7 +198,7 @@ while True:
                 the_hitbox = hit_boxes[hitbox_assign[tile_map.start_pos[object]["type"]]["type"]]
             except:
                 continue
-            the_hitbox = the_hitbox.move(the_hitbox.topleft[0],the_hitbox.topleft[1]).move(tile_map.start_pos[object]["x"]*16,tile_map.start_pos[object]["y"]*16)
+            the_hitbox = the_hitbox.move(tile_map.start_pos[object]["x"]*16,tile_map.start_pos[object]["y"]*16)
             # pygame.draw.rect(screen,"red",player_idle.hitbox)
             # if hitbox_assign[tile_map.start_pos[object]["type"]]["attribute"] == "collide":
             #     pygame.draw.rect(screen,"blue",the_hitbox)
@@ -217,7 +222,6 @@ while True:
                 camera_y+=1/16
                 dy-=1/16
             
-            
             a_fake.shift(-camera_x, -camera_y)
             tile_map.reload(map_data)
             tile_state = tile_map.get_pos(camera_x, camera_y)
@@ -225,12 +229,6 @@ while True:
     
     dx=tx
     dy=ty  
-
-    if edit:
-        camera_x=round(camera_x)
-        camera_y=round(camera_y)
-        real_mouse_tile_pos=(round(real_mouse_tile_pos[0]),round(real_mouse_tile_pos[1]))
-        mouse_tile_pos=(round(mouse_tile_pos[0]),round(mouse_tile_pos[1])) # type: ignore
 
     #editor
     if edit and key[pygame.K_g]:
@@ -244,7 +242,23 @@ while True:
         except:
             the_tile = 0
     if key[pygame.K_c] and edit:
-        hitbox_assign[str(map_data[str(real_mouse_tile_pos[0]*75)+"."+str(real_mouse_tile_pos[1])]["type"])]={"type":"full","attribute":"collide"}
+        hitbox_assign[str(map_data[str(real_mouse_tile_pos[0]*75)+"."+str(real_mouse_tile_pos[1])]["type"])]={"type":hb_list[list_id],"attribute":"collide"}
+        print(str(real_mouse_tile_pos[0]*75)+"."+str(real_mouse_tile_pos[1]))
+        print(list_id)
+        list_id+=1
+        print(str(map_data[str(real_mouse_tile_pos[0]*75)+"."+str(real_mouse_tile_pos[1])]["type"]))
+        
+        if list_id==len(hb_list):
+            list_id=0
+    if key[pygame.K_c] and edit and (key[pygame.K_LSHIFT] or key[pygame.K_RSHIFT]):
+        hitbox_assign[str(map_data[str(real_mouse_tile_pos[0]*75)+"."+str(real_mouse_tile_pos[1])]["type"])]["attribute"]=atr_list[atr_list_id]
+        print(str(real_mouse_tile_pos[0]*75)+"."+str(real_mouse_tile_pos[1]))
+        print(list_id)
+        atr_list_id+=1
+        print(str(map_data[str(real_mouse_tile_pos[0]*75)+"."+str(real_mouse_tile_pos[1])]["type"]))
+        
+        if atr_list_id==len(atr_list):
+            atr_list_id=0
     if (key[pygame.K_LSHIFT] or key[pygame.K_RSHIFT]) and key[pygame.K_s]:
         with open(join("./assets/",input("file name:")),mode="w") as f:
             data={"map":map_data,"other":{"cx":camera_x,"cy":camera_y}}
@@ -309,6 +323,28 @@ while True:
 
     #绘制格子
     pen.draw("block", tile_state)
+
+    if edit:
+        camera_x=round(camera_x)
+        camera_y=round(camera_y)
+        real_mouse_tile_pos=(round(real_mouse_tile_pos[0]),round(real_mouse_tile_pos[1]))
+        mouse_tile_pos=(round(mouse_tile_pos[0]),round(mouse_tile_pos[1])) # type: ignore
+        a_fake.shift(-camera_x, -camera_y)
+        tile_map.reload(map_data)
+        tile_state = tile_map.get_pos(camera_x, camera_y)
+        pygame.draw.rect(screen,"red",player_idle.hitbox)
+        for object in tile_state:
+            try:
+                the_hitbox = hit_boxes[hitbox_assign[tile_map.start_pos[object]["type"]]["type"]]
+            except:
+                continue
+            the_hitbox = the_hitbox.move(tile_map.start_pos[object]["x"]*16,tile_map.start_pos[object]["y"]*16)
+            if hitbox_assign[tile_map.start_pos[object]["type"]]["attribute"] == "collide":
+                pygame.draw.rect(screen,"blue",the_hitbox)
+            elif hitbox_assign[tile_map.start_pos[object]["type"]]["attribute"] == "kill":
+                pygame.draw.rect(screen,"red",the_hitbox)
+            elif hitbox_assign[tile_map.start_pos[object]["type"]]["attribute"] == "half":
+                pygame.draw.rect(screen,"cyan",the_hitbox)
     
     #绘制preview
     if edit:

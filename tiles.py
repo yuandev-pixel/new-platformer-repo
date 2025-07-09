@@ -7,7 +7,6 @@ class TileGrid:
 
     def move(self, x: float, y: float) -> None:
         for tile in self.start_pos.items():
-            # print(tile)
             tile[1]["x"] -= x
             tile[1]["y"] -= y
 
