@@ -87,13 +87,14 @@ lt = 0
 
 edit = True
 
-hb_list = ["full","top-half"]
+hb_list = ["full","top-half","bottom-half"]
 atr_list = ["collide","half","kill"]
 atr_list_id = 0
 list_id = 0
 hit_boxes = {
     "full":pygame.Rect(0,0,16,16),
-    "top-half":pygame.Rect(0,0,16,8)
+    "top-half":pygame.Rect(0,0,16,8),
+    "bottom-half":pygame.Rect(0,8,16,8)
 }
 
 while True:
@@ -155,12 +156,6 @@ while True:
             except:
                 continue
             the_hitbox = the_hitbox.move(tile_map.start_pos[object]["x"]*16,tile_map.start_pos[object]["y"]*16)
-            
-            # pygame.draw.rect(screen,"red",player_idle.hitbox)
-            # if hitbox_assign[tile_map.start_pos[object]["type"]]["attribute"] == "collide":
-            #     pygame.draw.rect(screen,"blue",the_hitbox)
-            # elif hitbox_assign[tile_map.start_pos[object]["type"]]["attribute"] == "kill":
-            #     pygame.draw.rect(screen,"red",the_hitbox)
             if the_hitbox.colliderect(player_idle.hitbox):
                 if hitbox_assign[tile_map.start_pos[object]["type"]]["attribute"] == "half":
                     continue
@@ -199,11 +194,6 @@ while True:
             except:
                 continue
             the_hitbox = the_hitbox.move(tile_map.start_pos[object]["x"]*16,tile_map.start_pos[object]["y"]*16)
-            # pygame.draw.rect(screen,"red",player_idle.hitbox)
-            # if hitbox_assign[tile_map.start_pos[object]["type"]]["attribute"] == "collide":
-            #     pygame.draw.rect(screen,"blue",the_hitbox)
-            # elif hitbox_assign[tile_map.start_pos[object]["type"]]["attribute"] == "kill":
-            #     pygame.draw.rect(screen,"red",the_hitbox)
             if the_hitbox.colliderect(player_idle.hitbox):
                 print(the_hitbox.bottom<=player_idle.hitbox.bottom)
                 if dy<=0 and hitbox_assign[tile_map.start_pos[object]["type"]]["attribute"] == "half":
@@ -238,10 +228,11 @@ while True:
         mouse_tile_pos=(round(mouse_tile_pos[0]),round(mouse_tile_pos[1])) # type: ignore
     if key[pygame.K_e]:
         try:
-            the_tile = map_data[str(real_mouse_tile_pos[0]*75)+"."+str(real_mouse_tile_pos[1])]["type"]
+            the_tile = int(map_data[str(real_mouse_tile_pos[0]*75)+"."+str(real_mouse_tile_pos[1])]["type"])
         except:
             the_tile = 0
     if key[pygame.K_c] and edit:
+        print(real_mouse_tile_pos[0])
         hitbox_assign[str(map_data[str(real_mouse_tile_pos[0]*75)+"."+str(real_mouse_tile_pos[1])]["type"])]={"type":hb_list[list_id],"attribute":"collide"}
         print(str(real_mouse_tile_pos[0]*75)+"."+str(real_mouse_tile_pos[1]))
         print(list_id)
@@ -279,6 +270,7 @@ while True:
         edit = not edit
     if lt==5:
         if key[pygame.K_DOWN]:
+            print(type(the_tile))
             the_tile += 8
             if the_tile>92:
                 the_tile-=8

@@ -1,10 +1,38 @@
 {
     "-2": {
-        "type": "top-half",
+        "type": "full",
         "attribute": "collide"
     },
     "8": {
         "type": "full",
         "attribute": "collide"
+    },
+    "9": {
+        "type": "top-half",
+        "attribute": "collide"
+    },
+    "10": {
+        "type": "full",
+        "attribute": "collide"
+    },
+    "11": {
+        "type": "full",
+        "attribute": "collide"
+    },
+    "12": {
+        "type": "top-half",
+        "attribute": "collide"
+    },
+    "14": {
+        "type": "top-half",
+        "attribute": "collide"
+    },
+    "54": {
+        "type": "full",
+        "attribute": "half"
+    },
+    "46": {
+        "type": "bottom-half",
+        "attribute": "half"
     }
 }
