@@ -35,6 +35,11 @@ dy = 0
 px=0
 py=0
 ground=False
+TERMINAL_V=1.5
+move_speed=0.1
+jump_hight=-0.7
+gravity=0.1
+show_hitboxs=False
 
 player_idle_frames = [
     pygame.transform.scale(
@@ -119,19 +124,21 @@ while True:
     if edit:
         dy=0
     if key[pygame.K_a]:
-        dx = math.ceil(0.1 * delta)
+        dx = math.ceil(move_speed * delta)
     if key[pygame.K_d]:
-        dx = -math.ceil(0.1 * delta)
+        dx = -math.ceil(move_speed * delta)
     if key[pygame.K_s] and edit:
-        dy = math.ceil(0.1 * delta)
+        dy = math.ceil(move_speed * delta)
     if key[pygame.K_w]:
         if edit:
-            dy = -math.ceil(0.1 * delta)
+            dy = -math.ceil(move_speed * delta)
         else:
             if ground:
-                dy=-1
+                dy=jump_hight
     if not edit:
-        dy+=0.2
+        dy+=gravity
+    if dy>TERMINAL_V:
+        dy=TERMINAL_V
     collision = False
     a_fake.shift(-camera_x, -camera_y)
     tile_map.reload(map_data)
@@ -195,7 +202,7 @@ while True:
                 continue
             the_hitbox = the_hitbox.move(tile_map.start_pos[object]["x"]*16,tile_map.start_pos[object]["y"]*16)
             if the_hitbox.colliderect(player_idle.hitbox):
-                print(the_hitbox.bottom<=player_idle.hitbox.bottom)
+                # print(the_hitbox.bottom<=player_idle.hitbox.bottom)
                 if dy<=0 and hitbox_assign[tile_map.start_pos[object]["type"]]["attribute"] == "half":
                     continue
                 collision = True
@@ -232,24 +239,28 @@ while True:
         except:
             the_tile = 0
     if key[pygame.K_c] and edit:
-        print(real_mouse_tile_pos[0])
+        # print(real_mouse_tile_pos[0])
         hitbox_assign[str(map_data[str(real_mouse_tile_pos[0]*75)+"."+str(real_mouse_tile_pos[1])]["type"])]={"type":hb_list[list_id],"attribute":"collide"}
-        print(str(real_mouse_tile_pos[0]*75)+"."+str(real_mouse_tile_pos[1]))
-        print(list_id)
+        # print(str(real_mouse_tile_pos[0]*75)+"."+str(real_mouse_tile_pos[1]))
+        # print(list_id)
         list_id+=1
-        print(str(map_data[str(real_mouse_tile_pos[0]*75)+"."+str(real_mouse_tile_pos[1])]["type"]))
+        # print(str(map_data[str(real_mouse_tile_pos[0]*75)+"."+str(real_mouse_tile_pos[1])]["type"]))
         
         if list_id==len(hb_list):
             list_id=0
     if key[pygame.K_c] and edit and (key[pygame.K_LSHIFT] or key[pygame.K_RSHIFT]):
         hitbox_assign[str(map_data[str(real_mouse_tile_pos[0]*75)+"."+str(real_mouse_tile_pos[1])]["type"])]["attribute"]=atr_list[atr_list_id]
-        print(str(real_mouse_tile_pos[0]*75)+"."+str(real_mouse_tile_pos[1]))
-        print(list_id)
         atr_list_id+=1
-        print(str(map_data[str(real_mouse_tile_pos[0]*75)+"."+str(real_mouse_tile_pos[1])]["type"]))
-        
         if atr_list_id==len(atr_list):
             atr_list_id=0
+    if key[pygame.K_f] and edit:
+        # print(real_mouse_tile_pos[0])
+        map_data[str(real_mouse_tile_pos[0]*75)+"."+str(real_mouse_tile_pos[1])]["flip-x"]=not(map_data[str(real_mouse_tile_pos[0]*75)+"."+str(real_mouse_tile_pos[1])]["flip-x"])
+    if key[pygame.K_f] and edit and (key[pygame.K_LSHIFT] or key[pygame.K_RSHIFT]):
+        # print(real_mouse_tile_pos[0])
+        map_data[str(real_mouse_tile_pos[0]*75)+"."+str(real_mouse_tile_pos[1])]["flip-y"]=not(map_data[str(real_mouse_tile_pos[0]*75)+"."+str(real_mouse_tile_pos[1])]["flip-y"])
+    if key[pygame.K_F9] and edit:
+        show_hitboxs=not show_hitboxs
     if (key[pygame.K_LSHIFT] or key[pygame.K_RSHIFT]) and key[pygame.K_s]:
         with open(join("./assets/",input("file name:")),mode="w") as f:
             data={"map":map_data,"other":{"cx":camera_x,"cy":camera_y}}
@@ -270,7 +281,7 @@ while True:
         edit = not edit
     if lt==5:
         if key[pygame.K_DOWN]:
-            print(type(the_tile))
+            # print(type(the_tile))
             the_tile += 8
             if the_tile>92:
                 the_tile-=8
@@ -326,19 +337,20 @@ while True:
         a_fake.shift(-camera_x, -camera_y)
         tile_map.reload(map_data)
         tile_state = tile_map.get_pos(camera_x, camera_y)
-        pygame.draw.rect(screen,"red",player_idle.hitbox)
-        for object in tile_state:
-            try:
-                the_hitbox = hit_boxes[hitbox_assign[tile_map.start_pos[object]["type"]]["type"]]
-            except:
-                continue
-            the_hitbox = the_hitbox.move(tile_map.start_pos[object]["x"]*16,tile_map.start_pos[object]["y"]*16)
-            if hitbox_assign[tile_map.start_pos[object]["type"]]["attribute"] == "collide":
-                pygame.draw.rect(screen,"blue",the_hitbox)
-            elif hitbox_assign[tile_map.start_pos[object]["type"]]["attribute"] == "kill":
-                pygame.draw.rect(screen,"red",the_hitbox)
-            elif hitbox_assign[tile_map.start_pos[object]["type"]]["attribute"] == "half":
-                pygame.draw.rect(screen,"cyan",the_hitbox)
+        if show_hitboxs:
+            pygame.draw.rect(screen,"red",player_idle.hitbox)
+            for object in tile_state:
+                try:
+                    the_hitbox = hit_boxes[hitbox_assign[tile_map.start_pos[object]["type"]]["type"]]
+                except:
+                    continue
+                the_hitbox = the_hitbox.move(tile_map.start_pos[object]["x"]*16,tile_map.start_pos[object]["y"]*16)
+                if hitbox_assign[tile_map.start_pos[object]["type"]]["attribute"] == "collide":
+                    pygame.draw.rect(screen,"blue",the_hitbox)
+                elif hitbox_assign[tile_map.start_pos[object]["type"]]["attribute"] == "kill":
+                    pygame.draw.rect(screen,"red",the_hitbox)
+                elif hitbox_assign[tile_map.start_pos[object]["type"]]["attribute"] == "half":
+                    pygame.draw.rect(screen,"cyan",the_hitbox)
     
     #绘制preview
     if edit:

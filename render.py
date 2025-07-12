@@ -11,6 +11,11 @@ class RenderPen:
             for block in data.values():
                 # print(block)
                 if int(block["type"]) != -1 or int(block["type"]) != 0:
-                    self.screen.blit(self.tiles[int(block["type"])],(block["x"]*16,block["y"]*16))
+                    draw_block=self.tiles[int(block["type"])]
+                    if block["flip-x"]:
+                        draw_block=pygame.transform.flip(draw_block,True,False)
+                    if block["flip-y"]:
+                        draw_block=pygame.transform.flip(draw_block,False,True)
+                    self.screen.blit(draw_block,(block["x"]*16,block["y"]*16))
         if type == "preview":
             self.screen.blit(data["preview"],data["pos"])

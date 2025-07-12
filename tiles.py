@@ -1,9 +1,9 @@
 class TileGrid:
     def __init__(self, start_pos: dict) -> None:
         self.start_pos = start_pos
-        self.cx = 0
-        self.cy = 0
-        self.tile_1 = (0, 0)
+        self.cx = 0.0
+        self.cy = 0.0
+        self.tile_1 = (0.0, 0.0)
 
     def move(self, x: float, y: float) -> None:
         for tile in self.start_pos.items():

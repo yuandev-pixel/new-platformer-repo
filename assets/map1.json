@@ -1,0 +1,1219 @@
+{
+    "map": {
+        "2250.27": {
+            "type": "-2",
+            "x": -4.0,
+            "y": 32.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "2325.26": {
+            "type": "-2",
+            "x": -3.0,
+            "y": 31.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "2475.26": {
+            "type": "-2",
+            "x": -1.0,
+            "y": 31.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "2775.26": {
+            "type": "-2",
+            "x": 3.0,
+            "y": 31.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "3000.26": {
+            "type": "-2",
+            "x": 6.0,
+            "y": 31.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "3375.26": {
+            "type": "-2",
+            "x": 11.0,
+            "y": 31.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "3600.26": {
+            "type": "-2",
+            "x": 14.0,
+            "y": 31.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "3825.26": {
+            "type": "-2",
+            "x": 17.0,
+            "y": 31.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "3900.26": {
+            "type": "-2",
+            "x": 18.0,
+            "y": 31.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "3525.27": {
+            "type": "-2",
+            "x": 13.0,
+            "y": 32.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "3450.27": {
+            "type": "-2",
+            "x": 12.0,
+            "y": 32.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "3075.27": {
+            "type": "-2",
+            "x": 7.0,
+            "y": 32.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "2625.26": {
+            "type": "-2",
+            "x": 1.0,
+            "y": 31.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "2250.25": {
+            "type": "-2",
+            "x": -4.0,
+            "y": 30.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "2100.25": {
+            "type": "-2",
+            "x": -6.0,
+            "y": 30.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "3225.30": {
+            "type": "-2",
+            "x": 9.0,
+            "y": 35.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "2925.31": {
+            "type": "-2",
+            "x": 5.0,
+            "y": 36.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "2550.31": {
+            "type": "-2",
+            "x": 0.0,
+            "y": 36.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "2325.31": {
+            "type": "-2",
+            "x": -3.0,
+            "y": 36.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "2475.30": {
+            "type": "-2",
+            "x": -1.0,
+            "y": 35.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "3075.28": {
+            "type": "-2",
+            "x": 7.0,
+            "y": 33.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "3525.28": {
+            "type": "-2",
+            "x": 13.0,
+            "y": 33.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "3525.29": {
+            "type": "-2",
+            "x": 13.0,
+            "y": 34.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "3525.32": {
+            "type": "-2",
+            "x": 13.0,
+            "y": 37.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "3375.36": {
+            "type": "-2",
+            "x": 11.0,
+            "y": 41.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "3000.39": {
+            "type": "-2",
+            "x": 6.0,
+            "y": 44.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "2625.41": {
+            "type": "-2",
+            "x": 1.0,
+            "y": 46.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "2550.41": {
+            "type": "-2",
+            "x": 0.0,
+            "y": 46.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "2700.40": {
+            "type": "-2",
+            "x": 2.0,
+            "y": 45.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "3450.39": {
+            "type": "-2",
+            "x": 12.0,
+            "y": 44.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "4125.38": {
+            "type": "-2",
+            "x": 21.0,
+            "y": 43.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "4350.39": {
+            "type": "-2",
+            "x": 24.0,
+            "y": 44.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "3975.40": {
+            "type": "-2",
+            "x": 19.0,
+            "y": 45.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "3975.26": {
+            "type": "-2",
+            "x": 19.0,
+            "y": 31.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "4050.26": {
+            "type": "-2",
+            "x": 20.0,
+            "y": 31.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "4125.26": {
+            "type": "-2",
+            "x": 21.0,
+            "y": 31.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "4200.26": {
+            "type": "-2",
+            "x": 22.0,
+            "y": 31.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "4275.26": {
+            "type": "-2",
+            "x": 23.0,
+            "y": 31.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "4425.26": {
+            "type": "-2",
+            "x": 25.0,
+            "y": 31.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "4500.26": {
+            "type": "-2",
+            "x": 26.0,
+            "y": 31.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "4575.26": {
+            "type": "-2",
+            "x": 27.0,
+            "y": 31.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "4650.26": {
+            "type": "-2",
+            "x": 28.0,
+            "y": 31.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "4725.26": {
+            "type": "-2",
+            "x": 29.0,
+            "y": 31.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "4800.26": {
+            "type": "-2",
+            "x": 30.0,
+            "y": 31.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "4800.27": {
+            "type": "-2",
+            "x": 30.0,
+            "y": 32.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "4875.27": {
+            "type": "-2",
+            "x": 31.0,
+            "y": 32.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "4950.27": {
+            "type": "-2",
+            "x": 32.0,
+            "y": 32.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "5025.27": {
+            "type": "-2",
+            "x": 33.0,
+            "y": 32.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "5100.27": {
+            "type": "-2",
+            "x": 34.0,
+            "y": 32.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "5175.27": {
+            "type": "-2",
+            "x": 35.0,
+            "y": 32.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "5250.27": {
+            "type": "-2",
+            "x": 36.0,
+            "y": 32.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "5325.27": {
+            "type": "-2",
+            "x": 37.0,
+            "y": 32.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "4350.26": {
+            "type": "-2",
+            "x": 24.0,
+            "y": 31.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "4875.26": {
+            "type": "-2",
+            "x": 31.0,
+            "y": 31.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "4950.26": {
+            "type": "-2",
+            "x": 32.0,
+            "y": 31.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "5025.26": {
+            "type": "-2",
+            "x": 33.0,
+            "y": 31.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "5100.26": {
+            "type": "-2",
+            "x": 34.0,
+            "y": 31.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "5175.26": {
+            "type": "-2",
+            "x": 35.0,
+            "y": 31.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "5250.26": {
+            "type": "-2",
+            "x": 36.0,
+            "y": 31.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "5325.26": {
+            "type": "-2",
+            "x": 37.0,
+            "y": 31.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "5400.26": {
+            "type": "-2",
+            "x": 38.0,
+            "y": 31.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "5400.27": {
+            "type": "-2",
+            "x": 38.0,
+            "y": 32.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "5475.26": {
+            "type": "-2",
+            "x": 39.0,
+            "y": 31.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "5475.27": {
+            "type": "-2",
+            "x": 39.0,
+            "y": 32.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "5550.26": {
+            "type": "-2",
+            "x": 40.0,
+            "y": 31.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "5550.27": {
+            "type": "-2",
+            "x": 40.0,
+            "y": 32.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "5625.26": {
+            "type": "-2",
+            "x": 41.0,
+            "y": 31.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "5625.27": {
+            "type": "-2",
+            "x": 41.0,
+            "y": 32.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "5625.28": {
+            "type": "-2",
+            "x": 41.0,
+            "y": 33.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "5625.29": {
+            "type": "-2",
+            "x": 41.0,
+            "y": 34.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "5625.30": {
+            "type": "-2",
+            "x": 41.0,
+            "y": 35.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "5625.31": {
+            "type": "-2",
+            "x": 41.0,
+            "y": 36.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "5625.32": {
+            "type": "-2",
+            "x": 41.0,
+            "y": 37.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "5625.33": {
+            "type": "-2",
+            "x": 41.0,
+            "y": 38.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "5625.34": {
+            "type": "-2",
+            "x": 41.0,
+            "y": 39.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "5625.35": {
+            "type": "-2",
+            "x": 41.0,
+            "y": 40.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "5625.36": {
+            "type": "-2",
+            "x": 41.0,
+            "y": 41.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "5625.37": {
+            "type": "-2",
+            "x": 41.0,
+            "y": 42.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "5625.38": {
+            "type": "-2",
+            "x": 41.0,
+            "y": 43.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "5625.39": {
+            "type": "-2",
+            "x": 41.0,
+            "y": 44.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "5625.40": {
+            "type": "-2",
+            "x": 41.0,
+            "y": 45.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "5625.41": {
+            "type": "-2",
+            "x": 41.0,
+            "y": 46.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "5625.42": {
+            "type": "-2",
+            "x": 41.0,
+            "y": 47.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "5625.43": {
+            "type": "-2",
+            "x": 41.0,
+            "y": 48.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "5625.44": {
+            "type": "-2",
+            "x": 41.0,
+            "y": 49.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "5625.45": {
+            "type": "-2",
+            "x": 41.0,
+            "y": 50.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "5625.46": {
+            "type": "-2",
+            "x": 41.0,
+            "y": 51.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "5625.47": {
+            "type": "-2",
+            "x": 41.0,
+            "y": 52.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "5625.48": {
+            "type": "-2",
+            "x": 41.0,
+            "y": 53.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "5625.49": {
+            "type": "-2",
+            "x": 41.0,
+            "y": 54.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "5625.50": {
+            "type": "-2",
+            "x": 41.0,
+            "y": 55.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "5625.51": {
+            "type": "-2",
+            "x": 41.0,
+            "y": 56.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "5625.52": {
+            "type": "-2",
+            "x": 41.0,
+            "y": 57.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "5625.53": {
+            "type": "-2",
+            "x": 41.0,
+            "y": 58.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "5625.54": {
+            "type": "-2",
+            "x": 41.0,
+            "y": 59.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "5625.55": {
+            "type": "-2",
+            "x": 41.0,
+            "y": 60.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "5625.56": {
+            "type": "-2",
+            "x": 41.0,
+            "y": 61.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "5625.57": {
+            "type": "-2",
+            "x": 41.0,
+            "y": 62.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "5625.58": {
+            "type": "-2",
+            "x": 41.0,
+            "y": 63.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "5625.59": {
+            "type": "-2",
+            "x": 41.0,
+            "y": 64.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "5625.60": {
+            "type": "-2",
+            "x": 41.0,
+            "y": 65.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "5625.61": {
+            "type": "-2",
+            "x": 41.0,
+            "y": 66.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "5625.62": {
+            "type": "-2",
+            "x": 41.0,
+            "y": 67.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "5625.63": {
+            "type": "-2",
+            "x": 41.0,
+            "y": 68.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "5625.64": {
+            "type": "-2",
+            "x": 41.0,
+            "y": 69.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "5625.65": {
+            "type": "-2",
+            "x": 41.0,
+            "y": 70.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "5625.66": {
+            "type": "-2",
+            "x": 41.0,
+            "y": 71.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "5625.67": {
+            "type": "-2",
+            "x": 41.0,
+            "y": 72.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "5625.68": {
+            "type": "-2",
+            "x": 41.0,
+            "y": 73.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "5625.69": {
+            "type": "-2",
+            "x": 41.0,
+            "y": 74.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "5700.69": {
+            "type": "-2",
+            "x": 42.0,
+            "y": 74.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "5775.69": {
+            "type": "-2",
+            "x": 43.0,
+            "y": 74.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "5850.69": {
+            "type": "-2",
+            "x": 44.0,
+            "y": 74.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "5925.69": {
+            "type": "-2",
+            "x": 45.0,
+            "y": 74.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "6000.69": {
+            "type": "-2",
+            "x": 46.0,
+            "y": 74.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "6075.69": {
+            "type": "-2",
+            "x": 47.0,
+            "y": 74.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "6150.69": {
+            "type": "-2",
+            "x": 48.0,
+            "y": 74.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "6225.69": {
+            "type": "-2",
+            "x": 49.0,
+            "y": 74.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "6300.69": {
+            "type": "-2",
+            "x": 50.0,
+            "y": 74.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "6375.69": {
+            "type": "-2",
+            "x": 51.0,
+            "y": 74.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "6450.69": {
+            "type": "-2",
+            "x": 52.0,
+            "y": 74.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "6525.69": {
+            "type": "-2",
+            "x": 53.0,
+            "y": 74.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "6600.69": {
+            "type": "-2",
+            "x": 54.0,
+            "y": 74.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "6675.69": {
+            "type": "-2",
+            "x": 55.0,
+            "y": 74.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "6750.69": {
+            "type": "-2",
+            "x": 56.0,
+            "y": 74.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "6825.69": {
+            "type": "-2",
+            "x": 57.0,
+            "y": 74.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "6825.68": {
+            "type": "-2",
+            "x": 57.0,
+            "y": 73.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "6825.67": {
+            "type": "-2",
+            "x": 57.0,
+            "y": 72.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "6825.66": {
+            "type": "-2",
+            "x": 57.0,
+            "y": 71.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "6825.65": {
+            "type": "-2",
+            "x": 57.0,
+            "y": 70.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "6825.64": {
+            "type": "-2",
+            "x": 57.0,
+            "y": 69.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "6825.63": {
+            "type": "-2",
+            "x": 57.0,
+            "y": 68.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "6825.62": {
+            "type": "-2",
+            "x": 57.0,
+            "y": 67.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "6825.61": {
+            "type": "-2",
+            "x": 57.0,
+            "y": 66.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "6825.60": {
+            "type": "-2",
+            "x": 57.0,
+            "y": 65.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "6825.59": {
+            "type": "-2",
+            "x": 57.0,
+            "y": 64.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "6825.58": {
+            "type": "-2",
+            "x": 57.0,
+            "y": 63.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "6825.57": {
+            "type": "-2",
+            "x": 57.0,
+            "y": 62.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "6825.56": {
+            "type": "-2",
+            "x": 57.0,
+            "y": 61.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "6825.55": {
+            "type": "-2",
+            "x": 57.0,
+            "y": 60.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "6825.54": {
+            "type": "-2",
+            "x": 57.0,
+            "y": 59.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "6825.53": {
+            "type": "-2",
+            "x": 57.0,
+            "y": 58.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "6825.52": {
+            "type": "-2",
+            "x": 57.0,
+            "y": 57.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "6825.51": {
+            "type": "-2",
+            "x": 57.0,
+            "y": 56.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "6825.50": {
+            "type": "-2",
+            "x": 57.0,
+            "y": 55.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "6825.49": {
+            "type": "-2",
+            "x": 57.0,
+            "y": 54.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "6825.48": {
+            "type": "-2",
+            "x": 57.0,
+            "y": 53.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "6825.47": {
+            "type": "-2",
+            "x": 57.0,
+            "y": 52.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "6825.46": {
+            "type": "-2",
+            "x": 57.0,
+            "y": 51.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "6825.45": {
+            "type": "-2",
+            "x": 57.0,
+            "y": 50.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "6825.44": {
+            "type": "-2",
+            "x": 57.0,
+            "y": 49.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "6825.43": {
+            "type": "-2",
+            "x": 57.0,
+            "y": 48.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "6825.42": {
+            "type": "-2",
+            "x": 57.0,
+            "y": 47.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "6825.41": {
+            "type": "-2",
+            "x": 57.0,
+            "y": 46.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "6825.40": {
+            "type": "-2",
+            "x": 57.0,
+            "y": 45.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "6825.39": {
+            "type": "-2",
+            "x": 57.0,
+            "y": 44.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "6825.38": {
+            "type": "-2",
+            "x": 57.0,
+            "y": 43.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "6825.37": {
+            "type": "-2",
+            "x": 57.0,
+            "y": 42.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "6825.36": {
+            "type": "-2",
+            "x": 57.0,
+            "y": 41.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "6825.35": {
+            "type": "-2",
+            "x": 57.0,
+            "y": 40.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "6825.34": {
+            "type": "-2",
+            "x": 57.0,
+            "y": 39.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "6825.33": {
+            "type": "-2",
+            "x": 57.0,
+            "y": 38.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "6825.32": {
+            "type": "-2",
+            "x": 57.0,
+            "y": 37.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "6825.31": {
+            "type": "-2",
+            "x": 57.0,
+            "y": 36.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "6825.30": {
+            "type": "-2",
+            "x": 57.0,
+            "y": 35.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "6825.29": {
+            "type": "-2",
+            "x": 57.0,
+            "y": 34.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "6825.28": {
+            "type": "-2",
+            "x": 57.0,
+            "y": 33.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "6825.27": {
+            "type": "-2",
+            "x": 57.0,
+            "y": 32.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "6825.26": {
+            "type": "-2",
+            "x": 57.0,
+            "y": 31.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "6825.25": {
+            "type": "-2",
+            "x": 57.0,
+            "y": 30.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "6825.24": {
+            "type": "-2",
+            "x": 57.0,
+            "y": 29.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "6825.23": {
+            "type": "-2",
+            "x": 57.0,
+            "y": 28.125,
+            "flip-x": false,
+            "flip-y": false
+        },
+        "6825.22": {
+            "type": "-2",
+            "x": 57.0,
+            "y": 27.125,
+            "flip-x": false,
+            "flip-y": false
+        }
+    },
+    "other": {
+        "cx": 34,
+        "cy": -5.125
+    }
+}
