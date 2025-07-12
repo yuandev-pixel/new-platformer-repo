@@ -298,7 +298,9 @@ while True:
         map_data[str(real_mouse_tile_pos[0]*75)+"."+str(real_mouse_tile_pos[1])]={
         "type":str(the_tile),
         "x":real_mouse_tile_pos[0]-camera_x,
-        "y":real_mouse_tile_pos[1]-camera_y
+        "y":real_mouse_tile_pos[1]-camera_y,
+        "flip-x":False,
+        "flip-y":False
         }
         tile_map.reload(map_data)
         
