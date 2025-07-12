@@ -37,8 +37,8 @@ py=0
 ground=False
 TERMINAL_V=1.5
 move_speed=0.1
-jump_hight=-0.7
-gravity=0.1
+jump_hight=-0.9
+gravity=0.15
 show_hitboxs=False
 
 player_idle_frames = [

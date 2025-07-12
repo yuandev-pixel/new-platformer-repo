@@ -34,5 +34,21 @@
     "46": {
         "type": "bottom-half",
         "attribute": "half"
+    },
+    "16": {
+        "type": "full",
+        "attribute": "collide"
+    },
+    "67": {
+        "type": "full",
+        "attribute": "collide"
+    },
+    "84": {
+        "type": "full",
+        "attribute": "kill"
+    },
+    "68": {
+        "type": "full",
+        "attribute": "kill"
     }
 }
