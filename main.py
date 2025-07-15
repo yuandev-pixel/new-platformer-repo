@@ -253,12 +253,15 @@ while True:
         atr_list_id+=1
         if atr_list_id==len(atr_list):
             atr_list_id=0
-    if key[pygame.K_f] and edit:
-        # print(real_mouse_tile_pos[0])
-        map_data[str(real_mouse_tile_pos[0]*75)+"."+str(real_mouse_tile_pos[1])]["flip-x"]=not(map_data[str(real_mouse_tile_pos[0]*75)+"."+str(real_mouse_tile_pos[1])]["flip-x"])
-    if key[pygame.K_f] and edit and (key[pygame.K_LSHIFT] or key[pygame.K_RSHIFT]):
-        # print(real_mouse_tile_pos[0])
-        map_data[str(real_mouse_tile_pos[0]*75)+"."+str(real_mouse_tile_pos[1])]["flip-y"]=not(map_data[str(real_mouse_tile_pos[0]*75)+"."+str(real_mouse_tile_pos[1])]["flip-y"])
+    try:
+        if key[pygame.K_f] and edit:
+            # print(real_mouse_tile_pos[0])
+            map_data[str(real_mouse_tile_pos[0]*75)+"."+str(real_mouse_tile_pos[1])]["flip-x"]=not(map_data[str(real_mouse_tile_pos[0]*75)+"."+str(real_mouse_tile_pos[1])]["flip-x"])
+        if key[pygame.K_f] and edit and (key[pygame.K_LSHIFT] or key[pygame.K_RSHIFT]):
+            # print(real_mouse_tile_pos[0])
+            map_data[str(real_mouse_tile_pos[0]*75)+"."+str(real_mouse_tile_pos[1])]["flip-y"]=not(map_data[str(real_mouse_tile_pos[0]*75)+"."+str(real_mouse_tile_pos[1])]["flip-y"])
+    except:
+        print("stupid")
     if key[pygame.K_F9] and edit:
         show_hitboxs=not show_hitboxs
     if (key[pygame.K_LSHIFT] or key[pygame.K_RSHIFT]) and key[pygame.K_s]:
