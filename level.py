@@ -8,7 +8,7 @@ def gen_hit_level():
     with open(join("./assets/",input("file name:")),mode="w") as f:
         data={"map":map_data,"other":{"cx":0,"cy":0}}
         json.dump(data, f, ensure_ascii=False, indent=4)
-def upgrade_level_data(level_data,level_version) -> dict:
+def upgrade_level_data(level_data,level_version,pp) -> dict:
     thing = level_data
     # print(thing)
     if level_version == 1.0 or level_version == 1.1:
@@ -19,7 +19,7 @@ def upgrade_level_data(level_data,level_version) -> dict:
         # print(thing)
         for block in thing:
             # print(block)
-            thing[block]["chunk-x"] = round(thing[block]["x"]//10)
-            thing[block]["chunk-y"] = round(thing[block]["y"]//10)
+            thing[block]["chunk-x"] = round((thing[block]["x"]-pp["cx"])//10)
+            thing[block]["chunk-y"] = round((thing[block]["y"]-pp["cy"])//10)
     # print(thing,"link")
     return thing
