@@ -11,6 +11,8 @@ import enemy
 import render
 import json
 import math
+import const
+import level
 from os import listdir
 from os.path import isfile, join
 
@@ -74,6 +76,8 @@ with open("./assets/map1.json") as json_file:
         data = json.load(json_file)
         map_data = data["map"]
         player_data = data["other"]
+        if player_data["version"] < 1.3:
+            map_data = level.upgrade_level_data(map_data,player_data["version"])
     except:
         data = {"map":{},"other":{"cx":0,"cy":0}}
         map_data = data["map"]
