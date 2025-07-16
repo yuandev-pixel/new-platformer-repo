@@ -9,11 +9,17 @@ def gen_hit_level():
         data={"map":map_data,"other":{"cx":0,"cy":0}}
         json.dump(data, f, ensure_ascii=False, indent=4)
 def upgrade_level_data(level_data,level_version) -> dict:
+    thing = level_data
+    # print(thing)
     if level_version == 1.0 or level_version == 1.1:
         print("unrecoverable")
         return {"type":-1}
     elif level_version == 1.2:
-        for block in level_data:
-            block["chunk-x"] = block["x"]//10
-            block["chunk-y"] = block["y"]//10
-    return level_data
+        # print("but its")
+        # print(thing)
+        for block in thing:
+            # print(block)
+            thing[block]["chunk-x"] = round(thing[block]["x"]//10)
+            thing[block]["chunk-y"] = round(thing[block]["y"]//10)
+    # print(thing,"link")
+    return thing

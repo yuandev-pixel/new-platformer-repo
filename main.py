@@ -17,7 +17,6 @@ from os import listdir
 from os.path import isfile, join
 
 pygame.init()
-
 SCREEN_WIDTH = 1200
 SCREEN_HIGHT = 800
 SCREEN_SIZE = (SCREEN_WIDTH, SCREEN_HIGHT)
@@ -26,6 +25,7 @@ full_tag = pygame.FULLSCREEN | pygame.SCALED | pygame.DOUBLEBUF | pygame.HWSURFA
 test_tag = pygame.SCALED | pygame.RESIZABLE | pygame.DOUBLEBUF | pygame.HWSURFACE
 screen = pygame.display.set_mode(SCREEN_SIZE, flags=test_tag, vsync = 1)
 clock = pygame.time.Clock()
+font = pygame.font.Font(pygame.font.get_default_font(),16)
 camera_x = 0
 camera_y = 0
 target_camera_x = 0
@@ -77,6 +77,7 @@ with open("./assets/map1.json") as json_file:
         map_data = data["map"]
         player_data = data["other"]
         if player_data["version"] < 1.3:
+            print("exec")
             map_data = level.upgrade_level_data(map_data,player_data["version"])
     except:
         data = {"map":{},"other":{"cx":0,"cy":0}}
@@ -369,6 +370,10 @@ while True:
 
     #绘制玩家
     player_idle.draw(screen)
+
+    screen.blit(font.render("fps:"+str(round(clock.get_fps())),True,"white"),(0,0))
+    screen.blit(font.render("x:"+str(camera_x),True,"white"),(0,16))
+    screen.blit(font.render("y:"+str(camera_y),True,"white"),(0,32))
 
     #更新画面
 
