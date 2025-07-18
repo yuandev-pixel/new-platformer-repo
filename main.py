@@ -79,7 +79,6 @@ with open("./assets/map1.json") as json_file:
         map_data = data["map"]
         player_data = data["other"]
         if player_data["version"] < 1.3:
-            print("exec")
             map_data = level.upgrade_level_data(map_data,player_data["version"],player_data)
     except:
         data = {"map":{},"other":{"cx":0,"cy":0}}
@@ -387,4 +386,4 @@ while True:
 
     pygame.display.flip()
     pygame.display.update()
-    clock.tick(120)
+    clock.tick(60)
