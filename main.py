@@ -7,11 +7,12 @@ import enemy
 import render
 import json
 import math
+import const
+import level
 from os import listdir
 from os.path import isfile, join
 
 pygame.init()
-
 SCREEN_WIDTH = 1200
 SCREEN_HIGHT = 800
 SCREEN_SIZE = (SCREEN_WIDTH, SCREEN_HIGHT)
@@ -20,8 +21,11 @@ full_tag = pygame.FULLSCREEN | pygame.SCALED | pygame.DOUBLEBUF | pygame.HWSURFA
 test_tag = pygame.SCALED | pygame.RESIZABLE | pygame.DOUBLEBUF | pygame.HWSURFACE
 screen = pygame.display.set_mode(SCREEN_SIZE, flags=test_tag, vsync = 1)
 clock = pygame.time.Clock()
+font = pygame.font.Font(pygame.font.get_default_font(),16)
 camera_x = 0
 camera_y = 0
+player_chunk_x=0
+player_chunk_y=0
 target_camera_x = 0
 target_camera_y = 0
 previous_camera_x = 1
@@ -70,6 +74,8 @@ with open("./assets/map1.json") as json_file:
         data = json.load(json_file)
         map_data = data["map"]
         player_data = data["other"]
+        if player_data["version"] < 1.3:
+            map_data = level.upgrade_level_data(map_data,player_data["version"],player_data)
     except:
         data = {"map":{},"other":{"cx":0,"cy":0}}
         map_data = data["map"]
@@ -222,6 +228,8 @@ while True:
     
     dx=tx
     dy=ty  
+    player_chunk_x = round(camera_x//10)
+    player_chunk_y = round(camera_y//10)
 
     #editor
     if edit and key[pygame.K_g]:
@@ -262,7 +270,7 @@ while True:
         show_hitboxs=not show_hitboxs
     if (key[pygame.K_LSHIFT] or key[pygame.K_RSHIFT]) and key[pygame.K_s]:
         with open(join("./assets/",input("file name:")),mode="w") as f:
-            data={"map":map_data,"other":{"cx":camera_x,"cy":camera_y}}
+            data={"map":map_data,"other":{"cx":camera_x,"cy":camera_y,"version":1.3}}
             json.dump(data, f, ensure_ascii=False, indent=4)
         with open(join("./assets/","hit_box.json"),mode="w") as f:
             json.dump(hitbox_assign, f, ensure_ascii=False, indent=4)
@@ -310,7 +318,9 @@ while True:
         "x":real_mouse_tile_pos[0]-camera_x,
         "y":real_mouse_tile_pos[1]-camera_y,
         "flip-x":False,
-        "flip-y":False
+        "flip-y":False,
+        "chunk-x":round((real_mouse_tile_pos[0]-camera_x)//10),
+        "chunk-y":round((real_mouse_tile_pos[1]-camera_y)//10),
         }
         tile_map.reload(map_data)
         
@@ -326,7 +336,7 @@ while True:
     #绘制部分
 
     #绘制格子
-    pen.draw("block", tile_state)
+    pen.draw("block", tile_state, {"chunk_x":player_chunk_x,"chunk_y":player_chunk_y})
 
     if edit:
         camera_x=round(camera_x)
@@ -353,7 +363,7 @@ while True:
     
     #绘制preview
     if edit:
-        pen.draw("preview", {"preview":preview_tile[int(the_tile)+2],"pos":mouse_tile_pos})
+        pen.draw("preview", {"preview":preview_tile[int(the_tile)+2],"pos":mouse_tile_pos},{"type":-1})
     
     #绘制选择
     if edit:
@@ -362,8 +372,14 @@ while True:
     #绘制玩家
     player_idle.draw(screen)
 
+    screen.blit(font.render("fps:"+str(round(clock.get_fps())),True,"white"),(0,0))
+    screen.blit(font.render("x:"+str(camera_x),True,"white"),(0,16))
+    screen.blit(font.render("y:"+str(camera_y),True,"white"),(0,32))
+    screen.blit(font.render("chunk_x:"+str(player_chunk_x),True,"white"),(0,48))
+    screen.blit(font.render("chunk_y:"+str(player_chunk_y),True,"white"),(0,64))
+
     #更新画面
 
     pygame.display.flip()
     pygame.display.update()
-    clock.tick(120)
+    clock.tick(60)
