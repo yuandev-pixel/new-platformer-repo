@@ -19,7 +19,7 @@ def upgrade_level_data(level_data,level_version,pp) -> dict:
         # print(thing)
         for block in thing:
             # print(block)
-            thing[block]["chunk-x"] = round((thing[block]["x"]-pp["cx"])//10)
-            thing[block]["chunk-y"] = round((thing[block]["y"]-pp["cy"])//10)
+            thing[block]["chunk-x"] = round((thing[block]["x"]-pp["cx"])//10-1)
+            thing[block]["chunk-y"] = round((thing[block]["y"]-pp["cy"])//10-1)
     # print(thing,"link")
     return thing

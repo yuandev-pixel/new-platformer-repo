@@ -10,11 +10,10 @@ class RenderPen:
     def draw(self,type:str,data:dict,info:dict) -> None:
         if type == "block":
             for block in data.values():
-                if abs(block["chunk-x"]-info["chunk_x"])<const.RENDER_DISTANCE or abs(block["chunk-y"]-info["chunk_y"])>const.RENDER_DISTANCE:
-                    # print("x",abs(block["chunk-x"]-info["chunk_x"]))
-                    # print("y",abs(block["chunk-y"]-info["chunk_y"]))
+                if abs(block["chunk-x"]-info["chunk_x"])>=const.RENDER_DISTANCE:
                     continue
-                # print(block)
+                if abs(block["chunk-y"]-info["chunk_y"])>=const.RENDER_DISTANCE:
+                    continue
                 if int(block["type"]) != -1 or int(block["type"]) != 0:
                     draw_block=self.tiles[int(block["type"])]
                     if block["flip-x"]:
