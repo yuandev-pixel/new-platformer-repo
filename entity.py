@@ -7,8 +7,8 @@ class StaticEntity:
         self.image = image
         self.hitbox = hitbox
 
-    def draw(self, screen:pygame.Surface) -> None:
-        screen.blit(self.image, (self.x, self.y))
+    def draw(self, screen:pygame.Surface,flip_x:bool,flip_y:bool) -> None:
+        screen.blit(pygame.transform.flip(self.image,flip_x,flip_y), (self.x, self.y))
 
 class AnimatedEntity:
     def __init__(self, x:int, y:int,image:list,hitbox:pygame.Rect,interval:int) -> None:
@@ -31,6 +31,6 @@ class AnimatedEntity:
             if self.frame >= self.length:
                 self.frame = 0
 
-    def draw(self, screen:pygame.Surface) -> None:
-        screen.blit(self.image[self.frame], (self.x, self.y))
+    def draw(self, screen:pygame.Surface,flip_x:bool,flip_y:bool) -> None:
+        screen.blit(pygame.transform.flip(self.image[self.frame],flip_x,flip_y), (self.x, self.y))
         
