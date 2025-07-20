@@ -58,6 +58,7 @@ player_idle = entity.AnimatedEntity(
     pygame.rect.Rect(SCREEN_WIDTH / 2-24, SCREEN_HIGHT / 2-36, 24, 36),
     4,
 )
+flip = False
 dirty_player_idle = player_idle
 
 select_tile = pygame.image.load("./assets/tiles/select.png")
@@ -132,9 +133,11 @@ while True:
     if key[pygame.K_a]:
         dx += accel * delta
         flag=True
+        flip=True
     if key[pygame.K_d]:
         dx += -accel * delta
         flag=True
+        flip=False
     if key[pygame.K_s] and edit:
         dy += accel * delta
     if key[pygame.K_w]:
