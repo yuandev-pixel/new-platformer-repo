@@ -36,9 +36,11 @@ px=0
 py=0
 ground=False
 TERMINAL_V=1.5
-move_speed=0.1
-jump_hight=-0.9
-gravity=0.15
+max_speed=0.7
+accel = 0.15
+deccel = 0.2
+jump_hight=-1
+gravity=0.12
 show_hitboxs=False
 
 player_idle_frames = [
@@ -122,21 +124,35 @@ while True:
 
     #移动逻辑
     key = pygame.key.get_pressed()
-    dx=0
     if edit:
         dy=0
+    if abs(dx)<=0.1:
+        dx=0
+    flag = False
     if key[pygame.K_a]:
-        dx = math.ceil(move_speed * delta)
+        dx += accel * delta
+        flag=True
     if key[pygame.K_d]:
-        dx = -math.ceil(move_speed * delta)
+        dx += -accel * delta
+        flag=True
     if key[pygame.K_s] and edit:
-        dy = math.ceil(move_speed * delta)
+        dy += accel * delta
     if key[pygame.K_w]:
         if edit:
-            dy = -math.ceil(move_speed * delta)
+            dy = -accel * delta
         else:
             if ground:
                 dy=jump_hight
+    if abs(dx)!=0 and not flag:
+        if dx>0:
+            dx-=deccel
+        else:
+            dx+=deccel
+    if abs(dx)>=max_speed:
+        if dx>0:
+            dx=max_speed
+        else:
+            dx=-max_speed
     if not edit:
         dy+=gravity
     if dy>TERMINAL_V:
@@ -377,9 +393,11 @@ while True:
     screen.blit(font.render("y:"+str(camera_y),True,"white"),(0,32))
     screen.blit(font.render("chunk_x:"+str(player_chunk_x),True,"white"),(0,48))
     screen.blit(font.render("chunk_y:"+str(player_chunk_y),True,"white"),(0,64))
+    screen.blit(font.render("dx:"+str(dx),True,"white"),(0,80))
+    screen.blit(font.render("dy:"+str(dy),True,"white"),(0,96))
 
     #更新画面
 
     pygame.display.flip()
     pygame.display.update()
-    clock.tick(60)
+    clock.tick()
