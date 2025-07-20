@@ -23,10 +23,14 @@ class Player:
         self.TERMINAL_V=1.5
         self.max_speed=0.7
         self.accel = 0.15
-        self.deccel = 0.2
+        self.deccel = 0.25
         self.jump_hight=-1
         self.gravity=0.12
         self.tile_state={}
+        self.animation = "idle"
+        self.jump_frames=0
+        self.idle_transform = [(24,48)]
+        self.jump_transform = [(24,48),(20,52),(17,55),(15,57),(14,58),(14,58),(15,57),(17,55),(20,52),(24,48)]
                 
         self.player_idle_frames = [
             pygame.transform.scale(
@@ -36,6 +40,14 @@ class Player:
             if isfile(join("./assets/entitys/player/idle", f))
         ]
 
+        self.player_run_frames = [
+            pygame.transform.scale(
+                pygame.image.load(join("./assets/entitys/player/running", f)), (24, 48)
+            )
+            for f in listdir("./assets/entitys/player/running")
+            if isfile(join("./assets/entitys/player/running", f))
+        ]
+
         self.player_idle = entity.AnimatedEntity(
             round(const.SCREEN_WIDTH / 2) - 12,
             round(const.SCREEN_WIDTH / 2) - 24,
@@ -43,7 +55,15 @@ class Player:
             pygame.rect.Rect(const.SCREEN_WIDTH / 2-24, const.SCREEN_HIGHT / 2-36, 24, 36),
             4,
         )
+        self.player_run = entity.AnimatedEntity(
+            round(const.SCREEN_WIDTH / 2) - 12,
+            round(const.SCREEN_WIDTH / 2) - 24,
+            self.player_run_frames,
+            pygame.rect.Rect(const.SCREEN_WIDTH / 2-24, const.SCREEN_HIGHT / 2-36, 24, 36),
+            4,
+        )
         self.flip = False
+        self.idle = True
     def move(self,edit,delta,a_fake,tile_map,map_data,hit_boxes,hitbox_assign) -> None:
         key = pygame.key.get_pressed()
         if edit:
@@ -51,14 +71,17 @@ class Player:
         if abs(self.dx)<=0.1:
             self.dx=0
         flag = False
+        self.idle=True
         if key[pygame.K_a]:
             self.dx += self.accel * delta
             flag=True
             self.flip=True
+            self.idle = False
         if key[pygame.K_d]:
             self.dx += -self.accel * delta
             flag=True
             self.flip=False
+            self.idle = False
         if key[pygame.K_s] and edit:
             self.dy += self.accel * delta
         if key[pygame.K_w]:
@@ -67,6 +90,8 @@ class Player:
             else:
                 if self.ground:
                     self.dy=self.jump_hight
+                    self.animation="jump"
+                    self.jump_frames=0
         if abs(self.dx)!=0 and not flag:
             if self.dx>0:
                 self.dx-=self.deccel
@@ -162,9 +187,15 @@ class Player:
                 a_fake.shift(-self.camera_x, -self.camera_y)
                 tile_map.reload(map_data)
                 tile_state = tile_map.get_pos(self.camera_x, self.camera_y)
+                ty=0
                 break
         
         self.dx=tx
         self.dy=ty  
         self.player_chunk_x = round(self.camera_x//10)
         self.player_chunk_y = round(self.camera_y//10)
+        if self.animation=="jump":
+            self.jump_frames+=1
+        if self.jump_frames==10:
+            self.animation="idle"
+            self.jump_frames=0
