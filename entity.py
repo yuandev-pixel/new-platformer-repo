@@ -32,5 +32,5 @@ class AnimatedEntity:
                 self.frame = 0
 
     def draw(self, screen:pygame.Surface,flip_x:bool,flip_y:bool,x_tran,y_tran) -> None:
-        screen.blit(pygame.transform.scale(pygame.transform.flip(self.image[self.frame],flip_x,flip_y),(x_tran,y_tran)), (self.x, self.y))
+        screen.blit(pygame.transform.flip(pygame.transform.scale(self.image[self.frame],(x_tran,y_tran)),flip_x,flip_y), (self.x, self.y))
         

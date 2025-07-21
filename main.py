@@ -15,7 +15,7 @@ pygame.init()
 
 full_tag = pygame.FULLSCREEN | pygame.SCALED | pygame.DOUBLEBUF | pygame.HWSURFACE
 test_tag = pygame.SCALED | pygame.RESIZABLE | pygame.DOUBLEBUF | pygame.HWSURFACE
-screen = pygame.display.set_mode(const.SCREEN_SIZE, flags=test_tag, vsync = 1)
+screen = pygame.display.set_mode(const.SCREEN_SIZE, flags=full_tag, vsync = 1)
 clock = pygame.time.Clock()
 tick_count=0
 font = pygame.font.Font("./fonts/game_font.ttf",16)
@@ -73,9 +73,13 @@ hit_boxes = {
 
 menu = "game"
 
-pause_items = ["resume","save map","exit"]
+pause_items = ["resume","save map","quit"]
 select_anti_buffer = False
 selected_item = 0
+
+sfx_switch = pygame.mixer.Sound("./assets/sfx/switch.wav")
+sfx_select = pygame.mixer.Sound("./assets/sfx/select.wav")
+sfx_lose = pygame.mixer.Sound("./assets/sfx/lose.wav")
 
 while True:
     #清空屏幕
@@ -110,6 +114,7 @@ while True:
                 the_tile = 0
         if key[pygame.K_ESCAPE]:
             menu="pause" 
+            sfx_select.play()
         if key[pygame.K_c] and edit:
             # print(real_mouse_tile_pos[0])
             hitbox_assign[str(map_data[str(real_mouse_tile_pos[0]*75)+"."+str(real_mouse_tile_pos[1])]["type"])]={"type":hb_list[list_id],"attribute":"collide"}
@@ -138,12 +143,6 @@ while True:
             show_hitboxs=not show_hitboxs
         if key[pygame.K_F8] and edit:
             show_debug_info=not show_debug_info
-        if (key[pygame.K_LSHIFT] or key[pygame.K_RSHIFT]) and key[pygame.K_s]:
-            with open(join("./assets/",input("file name:")),mode="w") as f:
-                data={"map":map_data,"other":{"cx":player.camera_x,"cy":player.camera_y,"version":1.3}}
-                json.dump(data, f, ensure_ascii=False, indent=4)
-            with open(join("./assets/","hit_box.json"),mode="w") as f:
-                json.dump(hitbox_assign, f, ensure_ascii=False, indent=4)
         if (key[pygame.K_LSHIFT] or key[pygame.K_RSHIFT]) and key[pygame.K_l]:
             with open(join("./assets/",input("file name:")),mode="r") as json_file:
                 try:
@@ -189,8 +188,8 @@ while True:
             "y":real_mouse_tile_pos[1]-player.camera_y,
             "flip-x":False,
             "flip-y":False,
-            "chunk-x":round((real_mouse_tile_pos[0]-player.camera_x*2)//10-1),
-            "chunk-y":round((real_mouse_tile_pos[1]-player.camera_y*2)//10-1),
+            "chunk-x":round((real_mouse_tile_pos[0]-27)//10),
+            "chunk-y":round((real_mouse_tile_pos[1]-27)//10),
             }
             tile_map.reload(map_data)
             
@@ -268,10 +267,32 @@ while True:
         keys = pygame.key.get_pressed()
         s_flag = False
         if keys[pygame.K_RETURN]:
+            sfx_select.play()
             if selected_item==0:
                 menu="game"
             elif selected_item==1:
-                with open(join("./assets/",input("file name:")),mode="w") as f:
+                active = True
+                input_text=""
+                while active:
+                    screen.fill("#21263f")
+                    for event in pygame.event.get():
+                        if event.type == pygame.QUIT:
+                            pygame.quit()
+                            sys.exit()
+                        elif event.type == pygame.KEYDOWN and active:
+                            if event.key == pygame.K_BACKSPACE:
+                                input_text = input_text[:-1]  # Remove last character
+                            elif event.key == pygame.K_RETURN:
+                                active=False
+                            else:
+                                input_text += event.unicode  # Add typed character to input
+                    screen.blit(big_font.render("map name:"+input_text,True,"white"),(const.SCREEN_WIDTH/2-big_font.size("map name:"+input_text)[0]/2,const.SCREEN_HIGHT/2-32))
+                    pygame.display.flip()
+                    pygame.display.update()
+                    clock.tick()
+                    tick_count+=1
+
+                with open(join("./assets/",input_text),mode="w") as f:
                     data={"map":map_data,"other":{"cx":player.camera_x,"cy":player.camera_y,"version":1.3}}
                     json.dump(data, f, ensure_ascii=False, indent=4)
                 with open(join("./assets/","hit_box.json"),mode="w") as f:
@@ -283,6 +304,7 @@ while True:
         if keys[pygame.K_UP]:
             s_flag=True
             if not select_anti_buffer:
+                sfx_switch.play()
                 selected_item-=1
                 select_anti_buffer=True
             if selected_item<0:
@@ -290,21 +312,22 @@ while True:
         if keys[pygame.K_DOWN]:
             s_flag=True
             if not select_anti_buffer:
+                sfx_switch.play()
                 selected_item+=1
                 select_anti_buffer=True
             if selected_item>=len(pause_items):
                 selected_item=0
         if not s_flag:
             select_anti_buffer=False
-        screen.blit(biger_font.render("Paused",True,"white"),(const.SCREEN_WIDTH/2-100,50))
+        screen.blit(biger_font.render("Paused",True,"white"),(const.SCREEN_WIDTH/2-biger_font.size("Paused")[0]/2,50))
         for i,text in enumerate(pause_items):
             if i == selected_item:
                 if i==2:
-                    screen.blit(biger_font.render(text,True,(250,50,75)),(const.SCREEN_WIDTH/2-100,i*68+250))
+                    screen.blit(biger_font.render(text,True,(250,50,75)),(const.SCREEN_WIDTH/2-biger_font.size(text)[0]/2,i*68+250))
                 else:
-                    screen.blit(biger_font.render(text,True,(75,50,250)),(const.SCREEN_WIDTH/2-100,i*68+250))
+                    screen.blit(biger_font.render(text,True,(75,50,250)),(const.SCREEN_WIDTH/2-biger_font.size(text)[0]/2,i*68+250))
             else:
-                screen.blit(big_font.render(text,True,"white"),(const.SCREEN_WIDTH/2-100,i*68+250))
+                screen.blit(big_font.render(text,True,"white"),(const.SCREEN_WIDTH/2-big_font.size(text)[0]/2,i*68+250))
     #更新画面
 
     pygame.display.flip()
