@@ -15,12 +15,12 @@ pygame.init()
 
 full_tag = pygame.FULLSCREEN | pygame.SCALED | pygame.DOUBLEBUF | pygame.HWSURFACE
 test_tag = pygame.SCALED | pygame.RESIZABLE | pygame.DOUBLEBUF | pygame.HWSURFACE
-screen = pygame.display.set_mode(const.SCREEN_SIZE, flags=full_tag, vsync = 1)
+screen = pygame.display.set_mode(const.SCREEN_SIZE, flags=test_tag, vsync = 1)
 clock = pygame.time.Clock()
 tick_count=0
-font = pygame.font.Font("./fonts/game_font.ttf",16)
-big_font = pygame.font.Font("./fonts/game_font.ttf",32)
-biger_font = pygame.font.Font("./fonts/game_font.ttf",48)
+font = pygame.font.Font("./fonts/Helvetica.ttf",16)
+big_font = pygame.font.Font("./fonts/Helvetica.ttf",32)
+biger_font = pygame.font.Font("./fonts/Helvetica.ttf",48)
 show_hitboxs=False
 show_debug_info = False
 player = pl.Player()
